@@ -7,3 +7,16 @@ body {
 
 #__next {
 }
+
+@keyframes bubbleScale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.animate-bubble-scale {
+  animation: bubbleScale 0.3s ease-in-out forwards;
+}

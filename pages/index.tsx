@@ -1,118 +1,322 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import DinosaurGame from '@/components/DinosaurGame';
+import Image from 'next/image';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
+import useScrollStore from '@/hooks/useScrollStore';
+import useNavbarNavigate from '@/hooks/useNavbarNavigate';
+import FirstPage from '@/components/FirstPage';
+import MatrixCodeRain from '@/components/CodeRain';
+import NeonGridFloor from '@/components/MovingGrid';
+import SecondPage from '@/components/SecondPage';
+import ThirdPage from '@/components/ThirdPage';
+import useInfoModalStore from '@/hooks/useInfoModalStore';
+import ContactPage from '@/components/ContactPage';
+import MobileMenu from '@/components/MobileMenu';
+import { FaChevronDown } from 'react-icons/fa';
 
 export default function Home() {
+  const { isOpen, closeModal } = useInfoModalStore();
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [isJumping, setIsJumping] = useState(false);
+  const { currentPosition, setCurrentPosition } = useScrollStore();
+  const { navbarDestination, setPage } = useNavbarNavigate();
+  const [usersPlace, setUsersPlace] = useState(0);
+
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const toggleMobileMenu = useCallback(() => {
+    setShowMobileMenu(current => !current);
+  }, []);
+
+  if (typeof window !== 'undefined') {
+    var windowsize = window.innerWidth;
+  } else {
+    var windowsize = 0;
+  }
+
+  useEffect(() => {
+    const scrollContainer = document.getElementById('scroll-container');
+    if (scrollContainer) {
+      const updateUsersPlace = () => {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const scrollLeft = scrollContainer.scrollLeft;
+        const scrollTop = scrollContainer.scrollTop;
+
+        const pagePositionX = Math.round(
+          (scrollLeft / containerRect.width) * 100
+        );
+        const pagePositionY = Math.round(
+          (scrollTop / containerRect.height) * 100
+        );
+
+        setUsersPlace(pagePositionX);
+      };
+
+      updateUsersPlace();
+
+      scrollContainer.addEventListener('scroll', updateUsersPlace);
+
+      return () => {
+        scrollContainer.removeEventListener('scroll', updateUsersPlace);
+      };
+    } else {
+      console.log("The 'scroll-container' element was not found.");
+    }
+  }, []);
+
+  useEffect(() => {
+    // console.log("User's Place:", usersPlace);
+  }, [usersPlace]);
+
+  const handleNavbarItemClick = (input: number) => {
+    const scrollContainer = document.getElementById('scroll-container');
+    if (scrollContainer) {
+      const pageWidth = scrollContainer.offsetWidth;
+      const scrollAmount = pageWidth;
+      if (usersPlace >= 200 && usersPlace < 300 && input == 1) {
+        scrollContainer.scrollLeft -= scrollAmount;
+        //case for projects to skills
+      }
+      if (usersPlace >= 300 && input == 2) {
+        scrollContainer.scrollLeft -= scrollAmount;
+        //case for contact to projects
+      }
+      if (usersPlace >= 300 && input == 1) {
+        scrollContainer.scrollLeft -= scrollAmount * 2;
+        //case for contact to skills
+      }
+      if (usersPlace >= 100 && usersPlace < 200 && input == 3) {
+        scrollContainer.scrollLeft += scrollAmount * 2;
+        //case for skills to contact
+      }
+      if (usersPlace >= 200 && input == 3) {
+        scrollContainer.scrollLeft += scrollAmount * 2;
+        //case for projects to contact
+      }
+      if (usersPlace >= 100 && usersPlace < 200 && input == 2) {
+        scrollContainer.scrollLeft += scrollAmount;
+        //case for skills to project
+      }
+      if (usersPlace < 100 && input == 1) {
+        scrollContainer.scrollLeft += scrollAmount;
+        //case for start to skills
+      }
+      if (usersPlace < 100 && input == 2) {
+        scrollContainer.scrollLeft += scrollAmount * 2;
+        //case for start to projects
+      }
+      if (usersPlace < 100 && input == 3) {
+        scrollContainer.scrollLeft += scrollAmount * 3;
+        //case for start to contact
+      }
+      if (input == 0) {
+        scrollContainer.scrollLeft -= scrollAmount * 3;
+        //case for start to contact
+      }
+    } else {
+      console.log("The 'scroll-container' element was not found.");
+    }
+  };
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | undefined = undefined;
+    const handleScroll = (event: WheelEvent) => {
+      const container = document.getElementById('scroll-container');
+      if (container) {
+        container.scrollLeft += event.deltaY;
+        event.preventDefault();
+        setIsScrolling(true);
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+          setIsScrolling(false);
+        }, 400);
+      }
+    };
+    document.addEventListener('wheel', handleScroll, { passive: false });
+    return () => {
+      document.removeEventListener('wheel', handleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | undefined = undefined;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === 'Space') {
+        // JUMP
+        setIsJumping(true);
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+          setIsJumping(false);
+        }, 800);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  const [showDiv, setShowDiv] = useState(false);
+
+  const handleComponentClick = () => {
+    setShowDiv(true);
+  };
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (showDiv) {
+      timer = setTimeout(() => {
+        setShowDiv(false);
+      }, 2000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [showDiv]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = document.getElementById('scroll-container');
+      if (container) {
+        const currentPosition = container.scrollLeft;
+        setCurrentPosition(currentPosition);
+      }
+    };
+    const container = document.getElementById('scroll-container');
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+    <div
+      id="scroll-container"
+      className="absolute w-screen h-screen overflow-x-scroll  overflow-y-hidden bg-light"
     >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <header className="z-40 fixed flex w-screen justify-between px-10 py-4">
+        <Image
+          onClick={() => handleNavbarItemClick(0)}
+          src={'/favicon.ico'}
+          width={80}
+          height={80}
+          alt={'logo'}
+        />
+
+        <div className="h-12  flex-row ml-8 gap-7 flex ">
+          <div className=" flex-row ml-8 gap-10 hidden md:flex font-bold ">
+            <div
+              className={`cursor-pointer ${
+                currentPosition > (windowsize * 1) / 2 &&
+                currentPosition <= (windowsize * 3) / 2
+                  ? 'text-primary'
+                  : 'text-black'
+              }`}
+              onClick={() => handleNavbarItemClick(1)}
+            >
+              //Skills
+            </div>
+            <div
+              className={`cursor-pointer ${
+                currentPosition > (windowsize * 3) / 2 &&
+                currentPosition <= (windowsize * 5) / 2
+                  ? 'text-primary'
+                  : 'text-black'
+              }`}
+              onClick={() => handleNavbarItemClick(2)}
+            >
+              //Projects{' '}
+            </div>
+            <div
+              className={`cursor-pointer ${
+                currentPosition > (windowsize * 5) / 2
+                  ? 'text-primary'
+                  : 'text-black'
+              }`}
+              onClick={() => handleNavbarItemClick(3)}
+            >
+              //Contact{' '}
+            </div>
+          </div>
+          <div className="md:hidden w-full">
+            <div
+              onClick={toggleMobileMenu}
+              className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative "
+            >
+              <p className="text-zinc-700 font-semibold text-2xl">Menu</p>
+              <FaChevronDown
+                className={`w-4 text-zinc-700 fill-zinc-700 transition ${
+                  showMobileMenu ? 'rotate-180' : 'rotate-0'
+                }`}
+              />
+              <div className="sm:absolute -left-16">
+                <MobileMenu visible={showMobileMenu} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div className="flex" style={{ width: '400vw' }}>
+        <div
+          onClick={handleComponentClick}
+          className="bottom-20 left-18 xl:left-96 flex-row gap-12 pl-32 invisible lg:visible fixed flex z-30 "
+        >
+          {currentPosition >= 500 && !isOpen ? (
+            <>
+              {showDiv && (
+                <div className="w-22 h-16 relative text-center mb-6 rounded-lg  bg-zinc-300 text-lg lg:text-2xl flex flex-wrap">
+                  Press the space bar to jump, click the sun to start the game.
+                </div>
+              )}
+              <DinosaurGame isJumping={isJumping} isRunning={isScrolling} />
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className="z-30 opacity-100">
+          <MatrixCodeRain />
+        </div>
+
+        <div className="z-30 h-screen w-screen justify-center items-center flex">
+          {currentPosition <= 1000 ? <FirstPage /> : <></>}
+        </div>
+        <div className=" z-10 overflow-hidden relative h-screen w-screen bg-zinc-600 ">
+          <SecondPage />
+          {/* 
+          <div className="bottom-0 bg-zinc-800 h-32 absolute">
+            <NeonGridFloor gridColor={'#3f3326'} backgroundColor={'#3f3326'} />
+          </div> */}
+        </div>
+
+        <div className="relative z-20 h-screen w-screen bg-gradient-to-t from-gray-100 via-blue-300 to-purple-300   ">
+          <ThirdPage />
+        </div>
+
+        <div className="z-30 relative h-screen w-screen bg-purple-200">
+          <ContactPage />
         </div>
       </div>
+    </div>
+  );
+}
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+{
+  /* <Image
+  width={2800}
+  height={80}
+  src="/../public/bg.gif"
+  alt="loading..."
+/> */
 }

@@ -22,6 +22,13 @@ module.exports = {
         light: '#f4f5f4', // Light mode background color
         dark: '#333333' // Dark mode background color
       },
+      ringColor: {
+        primary: '#B76EFF',
+        accent: ' #3D85C6',
+        highlight: '#FFD700',
+        light: '#f4f5f4', // Light mode background color
+        dark: '#333333' // Dark mode background color
+      },
       perspective: {
         none: 'none',
         sm: '500px',
