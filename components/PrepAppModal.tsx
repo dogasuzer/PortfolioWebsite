@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-import { TbWorld } from 'react-icons/tb';
 import ReactPlayer from 'react-player/youtube';
-
-import useInfoModalStore from '@/hooks/useInfoModalStore';
 
 interface InfoModalProps {
   visible?: boolean;
@@ -35,7 +32,7 @@ const PrepAppModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     >
       <div
         onClick={e => e.stopPropagation()}
-        className="flex w-3/4 max-w-7xl items-center h-full rounded-md overflow-hidden "
+        className="flex w-1/2 max-w-7xl items-center h-3/4 rounded-md overflow-hidden "
       >
         <div
           className={`${
@@ -49,7 +46,7 @@ const PrepAppModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
             <AiOutlineClose className="text-white w-6" />
           </div>
           <div className="relative md:pb-4">
-            <p className="text-white mt-8 md:mt-0 text-xl md:text-2xl h-full text-center lg:text-3xl font-bold md:mb-8">
+            <p className="text-white mt-6 md:mt-0 text-lg md:text-xl h-full text-center lg:text-2xl font-bold md:mb-5">
               Prep App{' '}
             </p>
           </div>
@@ -63,14 +60,14 @@ const PrepAppModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
               />
             </div>
             <div className=" flex text-center flex-row mt-4">
-              <p className="text-white text-sm lg:text-lg">
+              <p className="text-white  text-sm lg:text-md">
                 PrepApp is a mobile application developed to assist users in
                 preparing and organizing their cooking recipes. The app offers
                 features such as creating and managing recipes, tracking recipe
                 progress, and exploring a variety of recipes shared by other
                 users. Here are the techs and stacks used in PrepApp:
                 <p className="invisible lg:visible h-4 gap-4 lg:h-auto">
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     Front-end :
                   </span>
                   <span className="text-yellow-500 font-bold">
@@ -83,7 +80,7 @@ const PrepAppModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                     Custom UI Components
                   </span>{' '}
                   <br />
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     Back-end :
                   </span>
                   <span className="text-yellow-500 font-bold">AWS Amplify</span>
@@ -93,7 +90,7 @@ const PrepAppModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                     AWS AppSync
                   </span>
                   <br />
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline">
                     APIs and Libraries :
                   </span>
                   <span className="text-yellow-500 font-bold">Axios</span>,
@@ -102,14 +99,14 @@ const PrepAppModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                 </p>
               </p>
             </div>
-            <div className=" invisible md:visible flex gap-8  place-content-center mt-4">
+            <div className="visible flex gap-8 pb-6 place-content-center mt-4">
               <button className=" bg-zinc-600 flex place-content-center  hover:bg-zinc-400 rounded-lg ">
                 <a
                   href="https://github.com/dogasuzer/PrepApp"
                   className="github-button"
                   target="_blank"
                 >
-                  <BsGithub height={8} className="h-8 w-8 m-2 sm:m-6 " />
+                  <BsGithub height={8} className="h-8 w-8 m-2 md:m-4" />
                 </a>
               </button>
             </div>

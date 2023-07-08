@@ -35,7 +35,7 @@ const GroceryTrackerModal: React.FC<InfoModalProps> = ({
     >
       <div
         onClick={e => e.stopPropagation()}
-        className="flex w-3/4 max-w-7xl items-center h-full rounded-md overflow-hidden "
+        className="flex w-1/2 max-w-7xl items-center h-3/4 rounded-md overflow-hidden "
       >
         <div
           className={`${
@@ -49,7 +49,7 @@ const GroceryTrackerModal: React.FC<InfoModalProps> = ({
             <AiOutlineClose className="text-white w-6" />
           </div>
           <div className="relative md:pb-4">
-            <p className="text-white mt-8 md:mt-0 text-xl md:text-2xl h-full text-center lg:text-3xl font-bold md:mb-8">
+            <p className="text-white mt-6 md:mt-0 text-lg md:text-xl h-full text-center lg:text-2xl font-bold md:mb-5">
               Grocery Tracker
             </p>
           </div>
@@ -65,12 +65,12 @@ const GroceryTrackerModal: React.FC<InfoModalProps> = ({
             </div>
 
             <div className=" flex text-center flex-row mt-4">
-              <p className="text-white text-sm lg:text-lg">
+              <p className="text-white text-sm lg:text-md">
                 GroceryTracker is a mobile application designed to create
                 shopping lists. Fronted is written with React Native. Backend of
                 the app hosted via heroku, it is connected to a REST API.
                 <p className="invisible lg:visible h-4 gap-4 lg:h-auto">
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     Front-end :
                   </span>
                   <span className="text-yellow-500 font-bold">
@@ -80,12 +80,12 @@ const GroceryTrackerModal: React.FC<InfoModalProps> = ({
                   <span className="text-yellow-500 font-bold"> JavaScript</span>
                   ,<span className="text-yellow-500 font-bold"> React</span>,
                   <br />
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     Back-end :
                   </span>
                   <span className="text-yellow-500 font-bold">REST API</span>
                   <br />
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     APIs and Libraries :
                   </span>
                   <span className="text-yellow-500 font-bold">Postman</span>,
@@ -94,14 +94,14 @@ const GroceryTrackerModal: React.FC<InfoModalProps> = ({
                 </p>
               </p>
             </div>
-            <div className=" invisible md:visible flex gap-8  place-content-center mt-4">
+            <div className="visible flex gap-8 pb-6 place-content-center mt-4">
               <button className=" bg-zinc-600 flex place-content-center  hover:bg-zinc-400 rounded-lg ">
                 <a
                   href="https://github.com/dogasuzer/grocerytracker"
                   className="github-button"
                   target="_blank"
                 >
-                  <BsGithub height={8} className="h-8 w-8 m-2 sm:m-6 " />
+                  <BsGithub height={8} className="h-8 w-8 m-2 md:m-4 " />
                 </a>
               </button>
             </div>

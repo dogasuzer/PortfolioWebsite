@@ -21,10 +21,14 @@ const SecondPage: React.FC = () => {
   };
   return (
     <div className="relative h-full m-8 flex  justify-center ">
+      <div className="invisible lg:visible absolute bottom-96 text-gray-200 left-32 w-44 text-center mb-6 text-sm lg:text-md pb-24 flex flex-wrap">
+        P.S. Press the space bar to jump, click the sun to start the game.
+      </div>
+
       <div className="invisible xl:visible w-0 md:w-auto relative h-3/4 flex justify-center items-center z-20 ">
         <ProjectionScreenop2 />
       </div>
-      <div className="w-screen h-60 lg:bottom-0 mt-24 lg:mt-0 absolute z-30 flex justify-center">
+      <div className="w-screen h-60 lg:bottom-0 mt-24 lg:mt-0 absolute z-50 flex justify-center">
         <div className=" justify-center absolute mx-16 md:bottom-24 mt-32 md:mt-0 flex-wrap gap-4 flex ">
           <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"

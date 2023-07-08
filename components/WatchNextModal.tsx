@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
-
-import useInfoModalStore from '@/hooks/useInfoModalStore';
 import Image from 'next/image';
 
 interface InfoModalProps {
@@ -36,7 +34,7 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     >
       <div
         onClick={e => e.stopPropagation()}
-        className="flex w-3/4 max-w-7xl items-center h-full rounded-md overflow-hidden "
+        className="flex w-1/2 max-w-7xl items-center h-3/4 rounded-md overflow-hidden "
       >
         <div
           className={`${
@@ -50,7 +48,7 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
             <AiOutlineClose className="text-white w-6" />
           </div>
           <div className="relative  md:pb-4">
-            <p className="text-white mt-4 md:mt-0 text-xl md:text-2xl h-full text-center lg:text-3xl font-bold md:mb-8">
+            <p className="text-white mt-6 md:mt-0 text-lg md:text-xl h-full text-center lg:text-2xl font-bold md:mb-5">
               WatchNext{' '}
             </p>
           </div>
@@ -58,13 +56,13 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           <div className="flex flex-col">
             <Image
               alt="watch-next-photo"
-              className=" invisible w-0 lg:w-auto lg:visible object-contain lg:h-80  "
+              className=" invisible w-0 lg:w-auto lg:visible object-contain lg:h-60  "
               src="/WatchNextFull.png"
-              width={800}
-              height={800}
+              width={600}
+              height={600}
             />
             <div className=" flex text-center flex-row mt-4">
-              <p className="text-white text-sm lg:text-lg">
+              <p className="text-white  text-sm lg:text-md">
                 Watchnext is a web application that helps users decide what to
                 watch based on trailers, providing an experience similar to
                 Netflix with a focus on trailer previews. The project includes
@@ -72,7 +70,7 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                 technologies and frameworks. Here are the key features and
                 technologies used in Watchnext:
                 <p className="invisible lg:visible h-4 gap-4 lg:h-auto">
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     Front-end :
                   </span>
                   <span className="text-yellow-500 font-bold">Next.js</span>,
@@ -85,7 +83,7 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                   <span className="text-yellow-500 font-bold"> React SWR</span>{' '}
                   <span className="text-yellow-500 font-bold"> Zustand</span>{' '}
                   <br />
-                  <span className=" font-bold underline-offset-1 underline text-xl">
+                  <span className=" font-bold underline-offset-1 underline ">
                     Back-end :
                   </span>
                   <span className="text-yellow-500 font-bold"> Node.js</span>,
@@ -99,14 +97,14 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                 </p>
               </p>
             </div>
-            <div className="pb-4 lg:pb-0 flex gap-8  place-content-center lg:mt-2 mt-4">
+            <div className="visible flex gap-8 pb-6 place-content-center mt-4">
               <button className="bg-zinc-600 flex place-content-center  hover:bg-zinc-400 rounded-lg ">
                 <a
                   href="https://github.com/dogasuzer/Watchnext"
                   className="github-button"
                   target="_blank"
                 >
-                  <BsGithub height={8} className="h-8 w-8 m-2 sm:m-6 " />
+                  <BsGithub height={8} className="h-8 w-8 m-2 md:m-4 " />
                 </a>
               </button>
               <button className="bg-zinc-600 hover:bg-zinc-400 flex place-content-center  rounded-lg">
@@ -115,7 +113,7 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                   className="github-button"
                   target="_blank"
                 >
-                  <TbWorld height={8} className="h-8 w-8 m-2 sm:m-6 " />
+                  <TbWorld height={8} className="h-8 w-8 m-2 md:m-4 " />
                 </a>
               </button>
             </div>

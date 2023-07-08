@@ -55,11 +55,11 @@ function ContactPage() {
         ></div>
       </div>
       <Image
-        className="absolute bottom-10 invisible md:visible"
+        className="absolute bottom-10 invisible md:visible w-72 md:w-96"
         src="/dino.png"
         alt="cutedino"
-        width={500}
-        height={500}
+        width={400}
+        height={400}
       />
     </div>
   );

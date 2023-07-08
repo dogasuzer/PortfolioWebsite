@@ -5,7 +5,6 @@ import useScrollStore from '@/hooks/useScrollStore';
 import useNavbarNavigate from '@/hooks/useNavbarNavigate';
 import FirstPage from '@/components/FirstPage';
 import MatrixCodeRain from '@/components/CodeRain';
-import NeonGridFloor from '@/components/MovingGrid';
 import SecondPage from '@/components/SecondPage';
 import ThirdPage from '@/components/ThirdPage';
 import useInfoModalStore from '@/hooks/useInfoModalStore';
@@ -18,7 +17,6 @@ export default function Home() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const { currentPosition, setCurrentPosition } = useScrollStore();
-  const { navbarDestination, setPage } = useNavbarNavigate();
   const [usersPlace, setUsersPlace] = useState(0);
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -42,9 +40,6 @@ export default function Home() {
 
         const pagePositionX = Math.round(
           (scrollLeft / containerRect.width) * 100
-        );
-        const pagePositionY = Math.round(
-          (scrollTop / containerRect.height) * 100
         );
 
         setUsersPlace(pagePositionX);
@@ -160,26 +155,6 @@ export default function Home() {
     };
   }, []);
 
-  const [showDiv, setShowDiv] = useState(false);
-
-  const handleComponentClick = () => {
-    setShowDiv(true);
-  };
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    if (showDiv) {
-      timer = setTimeout(() => {
-        setShowDiv(false);
-      }, 2000);
-    }
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showDiv]);
-
   useEffect(() => {
     const handleScroll = () => {
       const container = document.getElementById('scroll-container');
@@ -225,7 +200,7 @@ export default function Home() {
               }`}
               onClick={() => handleNavbarItemClick(1)}
             >
-              //Skills
+              Skills
             </div>
             <div
               className={`cursor-pointer ${
@@ -236,7 +211,7 @@ export default function Home() {
               }`}
               onClick={() => handleNavbarItemClick(2)}
             >
-              //Projects{' '}
+              Projects
             </div>
             <div
               className={`cursor-pointer ${
@@ -246,7 +221,7 @@ export default function Home() {
               }`}
               onClick={() => handleNavbarItemClick(3)}
             >
-              //Contact{' '}
+              Contact
             </div>
           </div>
           <div className="md:hidden w-full">
@@ -268,17 +243,9 @@ export default function Home() {
         </div>
       </header>
       <div className="flex" style={{ width: '400vw' }}>
-        <div
-          onClick={handleComponentClick}
-          className="bottom-20 left-18 xl:left-96 flex-row gap-12 pl-32 invisible lg:visible fixed flex z-30 "
-        >
+        <div className="bottom-20 left-18 xl:left-96 flex-row gap-12 pl-32 invisible lg:visible fixed flex z-30 ">
           {currentPosition >= 500 && !isOpen ? (
             <>
-              {showDiv && (
-                <div className="w-22 h-16 relative text-center mb-6 rounded-lg  bg-zinc-300 text-lg lg:text-2xl flex flex-wrap">
-                  Press the space bar to jump, click the sun to start the game.
-                </div>
-              )}
               <DinosaurGame isJumping={isJumping} isRunning={isScrolling} />
             </>
           ) : (
@@ -310,13 +277,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
-
-{
-  /* <Image
-  width={2800}
-  height={80}
-  src="/../public/bg.gif"
-  alt="loading..."
-/> */
 }
