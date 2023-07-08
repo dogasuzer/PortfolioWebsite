@@ -4,17 +4,21 @@ import Clouds from './Clouds';
 import NeonGridFloor from './MovingGrid';
 import Projects from './Projects';
 import useSwitchStore from '@/hooks/useSwitchStore';
+import React, { MouseEvent } from 'react';
 
 const ThirdPage = () => {
   const { isOpen, onOpen, onClose } = useSwitchStore();
-  const handlePlay = () => {
+  const handlePlay = (event: MouseEvent<HTMLButtonElement>) => {
     console.log(isOpen);
+    event.preventDefault();
     if (isOpen) {
       onClose();
     } else {
       onOpen();
     }
     console.log(isOpen);
+    const buttonElement = event.target as HTMLButtonElement;
+    buttonElement.blur();
   };
 
   return (
