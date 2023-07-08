@@ -4,6 +4,7 @@ import { BsGithub } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
 
 import useInfoModalStore from '@/hooks/useInfoModalStore';
+import Image from 'next/image';
 
 interface InfoModalProps {
   visible?: boolean;
@@ -55,9 +56,12 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           </div>
 
           <div className="flex flex-col">
-            <img
+            <Image
+              alt="watch-next-photo"
               className=" invisible w-0 lg:w-auto lg:visible object-contain lg:h-80  "
               src="/WatchNextFull.png"
+              width={800}
+              height={800}
             />
             <div className=" flex text-center flex-row mt-4">
               <p className="text-white text-sm lg:text-lg">

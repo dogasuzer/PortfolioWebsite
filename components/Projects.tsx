@@ -4,6 +4,7 @@ import useInfoModalStore from '@/hooks/useInfoModalStore';
 import MovieBookModal from './MovieBookModal';
 import PrepAppModal from './PrepAppModal';
 import WatchNextModal from './WatchNextModal';
+import GroceryTrackerModal from './GroceryTrackerModal';
 
 function Projects() {
   const { isOpen, closeModal } = useInfoModalStore();
@@ -27,6 +28,11 @@ function Projects() {
         onClose={closeModal}
       />
       <PrepAppModal visible={projectName == 'PrepApp'} onClose={closeModal} />
+      <GroceryTrackerModal
+        visible={projectName == 'GroceryTracker'}
+        onClose={closeModal}
+      />
+
       <div className="flex flex-col h-full  text-center justify-start">
         Projects
         <div className="mt-8 justify-center h-1/2 flex flex-wrap  gap-4 ">

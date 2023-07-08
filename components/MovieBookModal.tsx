@@ -4,6 +4,7 @@ import { BsGithub } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
 
 import useInfoModalStore from '@/hooks/useInfoModalStore';
+import Image from 'next/image';
 
 interface InfoModalProps {
   visible?: boolean;
@@ -56,9 +57,12 @@ const MovieBookModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           </div>
 
           <div className="flex flex-col">
-            <img
-              className=" invisible w-0 lg:w-auto lg:visible object-contain lg:h-72  "
+            <Image
+              className="invisible w-0 lg:w-auto lg:visible object-contain lg:h-72"
               src="/moviebook.png"
+              alt="moviebook"
+              width={800}
+              height={800}
             />
             <div className=" flex text-center flex-row mt-4">
               <p className="text-white  text-sm lg:text-lg">

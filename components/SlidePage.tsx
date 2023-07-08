@@ -102,35 +102,39 @@ const SlidePage = () => {
     <div className=" z-30 w-screen h-screen justify-center gap-8  mx-4 lg:mx-8 center lg:mt-4 flex  ">
       <div className="mt-60 pt-10 absolute center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl hover:scale-125 border-purple-500 border-2	 bg-zinc-500 bg-opacity-70 rounded-full w-64 h-64 ">
         {skillsArray[skillIndex].skill}
-        <div className=" justify-center hidden lg:flex ">
-          <img
+        <div className="justify-center hidden lg:flex">
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
             alt="typescript"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 1 ? 'visible ' : 'invisible'
             } absolute`}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
             alt="javascript"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 2 ? 'visible ' : 'invisible'
             } absolute`}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
             alt="react"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 3 ? 'visible ' : 'invisible'
             } absolute`}
           />
-          <img
+          <Image
             src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg"
             alt="nextjs"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 4 ? 'visible ' : 'invisible'
             } absolute mt-6`}
@@ -138,107 +142,119 @@ const SlidePage = () => {
 
           <Image
             src="/reactnatix.png"
+            alt="reactnative"
             width={80}
             height={30}
-            alt="reactnative"
             className={`${
               currentSkill == 5 ? 'visible ' : 'invisible'
             } absolute`}
           />
-          <img
+          <Image
             src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
             alt="tailwind"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 6 ? 'visible ' : 'invisible'
             } absolute `}
           />
 
-          <img
+          <Image
             src="https://docs.amplify.aws/assets/logo-dark.svg"
             alt="amplify"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 7 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
             alt="css3"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 8 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
             alt="mongodb"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 9 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
             alt="nodejs"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 10 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg"
             alt="redux"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 11 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
             alt="postman"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 12 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg"
             alt="graphql"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 13 ? 'visible ' : 'invisible'
             } absolute `}
           />
 
-          <img
+          <Image
             src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
             alt="git"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 14 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
             alt="html5"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 15 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg"
             alt="firebase"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 16 ? 'visible ' : 'invisible'
             } absolute `}
           />
-          <img
+          <Image
             src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg"
             alt="figma"
-            width="80"
+            width={80}
+            height={80}
             className={`${
               currentSkill == 17 ? 'visible ' : 'invisible'
             } absolute `}
@@ -246,63 +262,72 @@ const SlidePage = () => {
         </div>
       </div>
 
-      <div className=" absolute top-48 left-24 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl  border-purple-500 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+      <div className="absolute top-48 left-24 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-purple-500 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg"
           alt="nextjs"
-          width="60"
+          width={60}
+          height={60}
           className={`absolute`}
         />
       </div>
 
-      <div className=" absolute top-48 right-24 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-yellow-200 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+      <div className="absolute top-48 right-24 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-yellow-200 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
           alt="tailwind"
-          width="60"
+          width={60}
+          height={60}
           className={`absolute`}
         />
       </div>
-      <div className=" absolute bottom-48 right-48 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl  border-yellow-200 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+
+      <div className="absolute bottom-48 right-48 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-yellow-200 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
           alt="nodejs"
-          width="70"
+          width={70}
+          height={70}
           className={`absolute`}
         />
       </div>
-      <div className=" absolute bottom-48 left-52 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl  border-purple-500 border-2 border-opacity-75   bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+
+      <div className="absolute bottom-48 left-52 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-purple-500 border-2 border-opacity-75 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
           alt="react"
-          width="60"
+          width={60}
+          height={60}
           className={`absolute`}
         />
       </div>
 
-      <div className="invisible 2xl:visible absolute bottom-96 2xl:left-72  ml-48  justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-opacity-75 border-yellow-200  border-2 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+      <div className="invisible 2xl:visible absolute bottom-96 2xl:left-72 ml-48 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-opacity-75 border-yellow-200 border-2 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
           alt="javascript"
-          width="60"
+          width={60}
+          height={60}
           className={`absolute`}
         />
       </div>
 
-      <div className="invisible 2xl:visible absolute bottom-96 2xl:right-72  mr-36  justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-opacity-75 border-purple-500 border-2 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+      <div className="invisible 2xl:visible absolute bottom-96 2xl:right-72 mr-36 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-opacity-75 border-purple-500 border-2 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
           alt="typescript"
-          width="60"
+          width={60}
+          height={60}
           className={`absolute`}
         />
       </div>
 
-      <div className="invisible 2xl:visible absolute bottom-48 2xl:right-96  mr-96  justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl  border-opacity-75 border-yellow-200 border-2 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40 ">
-        <img
+      <div className="invisible 2xl:visible absolute bottom-482xl:right-96 mr-96 justify-center items-center text-zinc-300 flex-col gap-6 flex text-center font-bold text-lg lg:text-2xl border-opacity-75 border-yellow-200 border-2 bg-zinc-500 bg-opacity-70 rounded-full w-40 h-40">
+        <Image
           src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
           alt="mongodb"
-          width="60"
+          width={60}
+          height={60}
           className={`absolute`}
         />
       </div>
