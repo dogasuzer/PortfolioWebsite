@@ -4,7 +4,6 @@ import React from 'react';
 import { useState } from 'react';
 
 import useSlideStore from '@/hooks/useSlideStore';
-import NeonGridFloor from './MovingGrid';
 
 const SecondPage: React.FC = () => {
   const [issOpen, setIssOpen] = useState(false);

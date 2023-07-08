@@ -1,11 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-import { TbWorld } from 'react-icons/tb';
 import ReactPlayer from 'react-player/youtube';
-
-import useInfoModalStore from '@/hooks/useInfoModalStore';
-import Image from 'next/image';
 
 interface InfoModalProps {
   visible?: boolean;

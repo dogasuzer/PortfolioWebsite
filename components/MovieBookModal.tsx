@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { TbWorld } from 'react-icons/tb';
-
-import useInfoModalStore from '@/hooks/useInfoModalStore';
 import Image from 'next/image';
 
 interface InfoModalProps {

@@ -85,13 +85,9 @@ const skillsArray = [
       'Figma is a collaborative design tool I use to create wireframes, prototypes, and high-fidelity designs. With Figma, I design visually appealing interfaces, collaborate with team members, and ensure seamless design-to-development handoff.'
   }
 ];
-import { AiOutlineLeft } from 'react-icons/ai';
-import { AiOutlineRight } from 'react-icons/ai';
 
 import useSlideStore from '@/hooks/useSlideStore';
 import React from 'react';
-import BouncyLetters from './BouncyLetters';
-import TextAnimation from './TextAnimation';
 import Image from 'next/image';
 
 const SlidePage = () => {

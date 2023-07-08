@@ -1,6 +1,3 @@
-import { useScroll, useTransform, motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import TextAnimation from './TextAnimation';
 import BouncyLetters from './BouncyLetters';
 import Image from 'next/image';
 
