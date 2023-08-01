@@ -109,7 +109,7 @@ const WatchNextModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
               </button>
               <button className="bg-zinc-600 hover:bg-zinc-400 flex place-content-center  rounded-lg">
                 <a
-                  href="https://watchnext-omega.vercel.app/"
+                  href="https://watchnext-coral.vercel.app"
                   className="github-button"
                   target="_blank"
                 >
