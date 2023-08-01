@@ -1,38 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Portfolio Website
+
+My Portfolio Website is a vibrant and interactive CV that goes beyond a simple HTML website. It's designed to showcase my projects and provide contact information in a fun and engaging way. The focus of the website is on animations rather than extensive functionality, as the content is primarily limited to my projects and contact details.
+
+## Features
+
+- **Interactive Game**: Explore the Projects section of my website and enjoy a game I've created exclusively for visitors. Have some fun while checking out my projects!
+
+- **Sketches and Animations**: I've incorporated sketches, animations, and vibrant colors throughout the website to make it visually appealing and enjoyable to navigate.
+
+## Tech Stack
+
+The portfolio website is built using the following technologies:
+
+- **Next.js**: Next.js is a powerful React framework that provides server-side rendering, static site generation, and other performance optimizations.
+
+- **Zustand**: Zustand is a state management library that offers a simple and lightweight solution for managing state in React applications.
+
+- **Typescript**: TypeScript adds static typing to JavaScript, enhancing code maintainability and catching errors during development.
+
+- **Tailwind CSS**: Tailwind CSS is a utility-first CSS framework that allows for rapid development by providing pre-built classes for styling elements.
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To visit the website: https://portfolio-website-fawn-three.vercel.app/
